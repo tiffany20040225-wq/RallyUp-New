@@ -100,7 +100,7 @@ def check_achievements(connection, user_id, unlocked_date):
 
     new_achievements = []
     for name in earned:
-        # already unlocked? INSERT OR IGNORE leaves it as it is
+        # INSERT OR IGNORE for the unlocked achievement
         cursor = connection.execute(
             "INSERT OR IGNORE INTO achievements "
             "(user_id, achievement_name, unlocked_date) VALUES (?, ?, ?)",
