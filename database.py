@@ -59,9 +59,8 @@ def init_db():
 
 
 def get_user():
-    # get user
     """
-    read the local player's name, XP and level, show to dict
+    read name, XP and level, show to dict
     """
     connection = connect()
     try:
@@ -75,7 +74,6 @@ def get_user():
 
 
 def update_uname(name):
-    # update use name
     """
     update player's name
     """
@@ -90,16 +88,14 @@ def update_uname(name):
 
 
 def save_practice(duration, training_type):
-    # keep the log, XP and achievements in one save so they do not get out of sync
     """
-    save one practice and return its XP, new level and newly unlocked
-    achievements
+    save one practice and return its XP, new level and newly unlocked achievements
     """
     earned_xp = calculate_xp(duration)
     saved_date = datetime.now().strftime("%Y-%m-%d %H:%M")
     connection = connect()
     try:
-        # Commit on success. If an exception leaves this block,
+        # commit on success. If an exception leaves this block
         # roll back its pending writes.
         with connection:
             user = connection.execute(
@@ -115,14 +111,14 @@ def save_practice(duration, training_type):
                 "VALUES (?, ?, ?, ?, ?)",
                 (DEFAULT_USER_ID, saved_date, duration, training_type, earned_xp),
             )
-            # Use the practice record's connection for the XP update,
-            # keeping both writes in the same transaction.
+            # Use the practice record's connection for the XP update
+            # keeping both writes in the same transaction
             connection.execute(
                 "UPDATE users SET total_xp = ?, level = ? WHERE id = ?",
                 (total_xp, level, DEFAULT_USER_ID),
             )
-            # Pass this connection to the achievement INSERTs too.
-            # Do not commit them separately.
+            # pass this connection to the achievement INSERTs too
+            # do not commit them 
             new_achievements = check_achievements(
                 connection, DEFAULT_USER_ID, saved_date
             )
@@ -130,8 +126,7 @@ def save_practice(duration, training_type):
         # before this saved result is returned.
         return earned_xp, level, new_achievements
     finally:
-        # Close the connection whether saving succeeds or fails.
-        # The with block handles rollback; exceptions still reach the caller.
+        # Close the connection 
         connection.close()
 
 
@@ -156,7 +151,6 @@ def get_practices():
 
 
 def get_achievements_unlocked():
-    # get unlocked achievements
     """
     get the unlocked achievement name which was earned
     """
