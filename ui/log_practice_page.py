@@ -83,7 +83,7 @@ def build_log_practice_page(parent, show_page):
             return
 
         previous_level = get_user()["level"]
-        # compare tasks before and after, so "complete" only appears once
+        # compare tasks before and after
         before_tasks = get_multiTasks(get_practices())
         earned_xp, level, unlocked = save_practice(duration, training_type)
         after_tasks = get_multiTasks(get_practices())
