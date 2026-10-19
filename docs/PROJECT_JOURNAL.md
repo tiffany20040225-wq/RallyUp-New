@@ -1,7 +1,5 @@
 # RallyUp Development Notes
 
-[中文版](PROJECT_JOURNAL_ZH.md)
-
 Put together on 19 October 2026 from the earlier development discussions, README and saved recording materials. I have arranged the notes around the problems that came up, rather than trying to assign a date to every change. Feature descriptions follow the current code; demonstration results refer to the saved recording frames.
 
 ## 1. What I wanted to make
