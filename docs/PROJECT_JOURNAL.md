@@ -101,8 +101,3 @@ Looking back, I concentrated more on getting the features working than on keepin
 - [Project overview and running instructions](../README.md)
 - [Code concept map](evidence/code_concept_map.pdf)
 
-Upload the complete `docs` folder with the submitted repository, then copy the actual English journal page URL into the appendix. Keep `docs/evidence` with it so the images work. If the repository is private, the assessor will need access.
-
-Suggested appendix text:
-
-> Access to my Project Journal: **[paste the published journal URL here]**. My journal covers the development of RallyUp, the problems I worked through, and the changes made along the way. It also includes screenshots from the demonstration and notes on the code. A Chinese version is linked at the top.
